@@ -1,3 +1,5 @@
+package talks.models;
+
 import java.io.*;
 import java.net.*;
 

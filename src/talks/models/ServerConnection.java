@@ -1,3 +1,5 @@
+package talks.models;
+
 import java.net.Socket;
 import java.net.ServerSocket;
 
