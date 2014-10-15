@@ -1,5 +1,6 @@
 package talks.models;
 
-public Message{
+public class Message
+{
 	
 }
