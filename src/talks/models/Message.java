@@ -15,5 +15,44 @@ public class Message
 		Date current = new Date();
 		timestamp = current.getTime();
 	}
+
+	//getters and setters
+
+	public int getStatusCode()
+	{
+		return statusCode;
+	}
+	public void setStatusCode(int statusCode)
+	{
+		this.statusCode=statusCode;
+	}
+
+	public int getCreatorId()
+	{
+		return creatorId;
+	}
+	public void setCreatorId(int creatorId)
+	{
+		this.creatorId=creatorId;
+	}
+
+        public String getMessage()
+	{
+		return message;
+	}
+	public void setMessage(String message)
+	{
+		this.message=message;
+	}
+
+	public long getTimestamp()
+	{
+		return timestamp;
+	}
+	public void setTimestamp(long timestamp)
+	{
+		this.timestamp=timestamp;
+	}
 	
 }
+
