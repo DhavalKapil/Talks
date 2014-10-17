@@ -4,7 +4,10 @@ import java.io.*;
 
 /**
  * The Node class implements an abstraction of a 
- * particular person using chat application
+ * particular person using chat application.
+ * Communication takes place between two nodes 
+ * representing the same person where one is on the
+ * server and other on the client side.
  */
 class Node
 {
