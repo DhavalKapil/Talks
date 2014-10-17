@@ -1,0 +1,14 @@
+Regarding logic
+
+1. Never ever use try catch in the models. They should not handle errors on their own. Let them throw Exceptions.
+
+Regarding semantics
+
+1. '=' should have one space behind and one after.
+2. Tab structure should be followed strictly
+3. No SOP statement anywhere except for controllers.
+4. Class structure : instance variables, constructors, get/set pairs, instance methods, static methods.
+5. variables name should be meaningful. No 'm' for message, 'c' for connection etc. Usual rule -> make all case of class name small.
+	eg. Message class -> message object name
+
+Will be updated as and when I see deviation from the usual flow
