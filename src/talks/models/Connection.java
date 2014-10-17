@@ -25,7 +25,7 @@ abstract class Connection
 		{e.printStackTrace();}
 	}
 
-	public Object recieveObject()
+	public Object receiveObject()
 	{
 		try
 		{
