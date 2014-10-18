@@ -5,6 +5,7 @@ import java.net.Socket;
 
 public class ClientConnection extends Connection
 {
+	/*Connects the client to the Server*/
 	public void connect()
 	{
 		try
@@ -13,7 +14,9 @@ public class ClientConnection extends Connection
 			System.out.println("Connected to Server :D!!!");
 		}
 		catch(Exception e)
-		{e.printStackTrace();}
+		{
+			e.printStackTrace();
+		}
 	}
 	
 }
