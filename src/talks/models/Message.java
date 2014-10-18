@@ -5,15 +5,22 @@ import java.util.Date;
 
 public class Message
 {
+	/** The status of the message */
 	private int statusCode;
+
+	/** The unique id of the creator */
 	private int creatorId;
+
+	/** The main message content */
 	private String message;
+
+	/** The unique timestamp of the message */
 	private long timestamp;
 
-	/*
-	addTimeStamp() method stores the number of milliseconds
-	between midnight of January 1, 1970 and the current date 
-	in the private variable- timestamp
+	/**
+	*addTimeStamp() method stores the number of milliseconds
+	*between midnight of January 1, 1970 and the current date 
+	*in the private variable- timestamp
 	*/
 	public void addTimestamp()
 	{
