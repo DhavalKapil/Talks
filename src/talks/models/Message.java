@@ -10,6 +10,11 @@ public class Message
 	private String message;
 	private long timestamp;
 
+	/*
+	addTimeStamp() method stores the number of milliseconds
+	between midnight of January 1, 1970 and the current date 
+	in the private variable- timestamp
+	*/
 	public void addTimestamp()
 	{
 		Date current = new Date();
