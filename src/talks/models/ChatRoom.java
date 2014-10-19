@@ -26,24 +26,19 @@ public class ChatRoom
 	/** The unique String of the chatroom that user uses to access it */
 	private String identifier;
 
-	/** The broadcast method sends messages received from the server to all the nodes  */
-	public void broadcast(Message message)
-	throws IOException
+	/**
+     * public constructor to initialize the instance variables
+     */
+	public ChatRoom(String password, String description, ArrayList<Node> nodes, int id, String identifier)
 	{
-		int len=nodes.size();
-		for(int i=0;i<len;i++)
-		{
-             nodes.get(i).sendMessage(message);
-		}    
-	}
-    
-    /** The insertNode method inserts a new node when a new client is added to the chatroom */
-	public void insertNode(Node node)
-	{
-         nodes.add(node);
+		this.password=password;
+		this.description=description;
+		this.nodes=nodes;
+		this.id=id;
+		this.identifier=identifier;
 	}
 
-	//getters and setters
+	// getters and setters
 
 	public void setPassword(String password)
 	{
@@ -65,7 +60,7 @@ public class ChatRoom
 	{
 		return nodes;
 	}
-    public void setNodes(ArrayList<Node> nodes)
+	public void setNodes(ArrayList<Node> nodes)
     {
          this.nodes=nodes;
     }
@@ -85,4 +80,32 @@ public class ChatRoom
 	{
 		return identifier;
 	}
+
+	/**
+	 * Sends 'message' to all the nodes
+	 * 
+	 * @param message  The message to be sent
+	 * @throws IOException 
+	 */
+	public void broadcast(Message message)
+	throws IOException
+	{
+		int len=nodes.size();
+		for(int i=0;i<len;i++)
+		{
+             nodes.get(i).sendMessage(message);
+		}    
+	}
+    
+    /** 
+     * inserts a new node
+     * 
+     * @param node   The node to be added 
+     */
+	public void insertNode(Node node)
+	{
+         nodes.add(node);
+	}
+
+	
 }
