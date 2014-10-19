@@ -8,7 +8,6 @@ import java.util.*;
  * by sending the messages received from the server to all
  * the client side nodes. 
  */
-
 public class ChatRoom
 {
 	/** The unique password of the chatroom */
@@ -27,8 +26,8 @@ public class ChatRoom
 	private String identifier;
 
 	/**
-     * public constructor to initialize the instance variables
-     */
+	 * public constructor to initialize the instance variables
+	 */
 	public ChatRoom(String password, String description, ArrayList<Node> nodes, int id, String identifier)
 	{
 		this.password=password;
@@ -61,9 +60,9 @@ public class ChatRoom
 		return nodes;
 	}
 	public void setNodes(ArrayList<Node> nodes)
-    {
-         this.nodes=nodes;
-    }
+	{
+	     this.nodes=nodes;
+	}
 	public void setId(int id)
 	{
 		this.id=id;
@@ -93,19 +92,17 @@ public class ChatRoom
 		int len=nodes.size();
 		for(int i=0;i<len;i++)
 		{
-             nodes.get(i).sendMessage(message);
+			nodes.get(i).sendMessage(message);
 		}    
 	}
-    
-    /** 
-     * inserts a new node
-     * 
-     * @param node   The node to be added 
-     */
+
+	/** 
+	 * inserts a new node
+	 * 
+	 * @param node   The node to be added 
+	 */
 	public void insertNode(Node node)
 	{
-         nodes.add(node);
+		nodes.add(node);
 	}
-
-	
 }
