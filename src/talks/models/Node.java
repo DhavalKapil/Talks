@@ -9,7 +9,7 @@ import java.io.*;
  * representing the same person where one is on the
  * server and other on the client side.
  */
-class Node
+public class Node
 {
     /** The unique id of the Node */
     private int id;
@@ -76,7 +76,7 @@ class Node
     }
 
     /**
-     * Sends 'message' from this Node to the server
+     * Sends 'message' from this Node
      *
      * @param message   The message to be sent
      * @throws IOException
@@ -88,7 +88,7 @@ class Node
     }
 
     /**
-     * Receives a message from the server and returns it
+     * Receives a message and returns it
      * This method blocks the I/O till the message is received
      *
      * @return  The message obtained from the server
