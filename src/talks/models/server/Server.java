@@ -1,12 +1,12 @@
 package talks.models.server;
-
+import java.util.*;
 import java.io.*;
 import java.net.*;
 
 public class Server
 {
-	private ArrayList<ChatRoom> chatRoomList;
-	private ArrayList<Node> nodes;
+	//private ArrayList<ChatRoom> chatRoomList;
+	//private ArrayList<Node> nodes;
 	public static void main(String[] args)
 	throws Exception
 	{
@@ -19,40 +19,40 @@ public class Server
 		int port;
 		try
 		{
-			int port1 = Integer.parseInt(args[0]);
+			port= Integer.parseInt(args[0]);
 		}
 		catch(NumberFormatException e)
 		{
 			System.out.println("port expected...");
 			return;
 		}
-		ServerConnection sc;
-		sc.port=port1;
-		sc.connect(); /*remove accept from the server connection class */
+		ServerSocket server_socket=new ServerSocket(port);
+		/*remove accept from the server connection class */
 		System.out.println("server started");
 		while(true)
 		{
-			Socket cs = ss.accept();
-			Thread t = new work_thread(cs);
+			Socket s=server_socket.accept();
+			ServerConnection server_connection=new ServerConnection(s);
+			Thread t = new work_thread(server_connection);
 			t.start();
 		}
-		ss.close();
+		//server_socket.close();
 	}
 
 }
-public class work_thread extends Thread
+class work_thread extends Thread
 {
-    Socket socket;
-    work_thread(Socket socket)
+    ServerConnection server_c;
+    work_thread(ServerConnection server_c)
     {
-        this.socket=socket;
+        this.server_c=server_c;
     }
-	public void createChatRoom(String password,String description,ArrayList<Node> nodes,String identifier)
+/*	public void createChatRoom(String password,String description,ArrayList<Node> nodes,String identifier)
 	{
 		ChatRoom obj=new ChatRoom(password,description,nodes,chatRoomList.size()+1,identifier);
 		if(chatRoomList.size()==0)
 		{
-		chatRoomList.add(1);
+			chatRoomList.add(1);
 		}
 		chatRoomList.add(chatRoomList[chatRoomList.size()-1]+1)	;
 		nodes[0].setChatRoomId(chatRoomList[chatRoomList.size()-1]);
@@ -71,7 +71,7 @@ public class work_thread extends Thread
 		Message m=ip.recieveObject();
 		int cid=m.getChatRoomId();
 		/* send chatroom id = -1 in the message if a new chatroom is to be created */
-		if(cid==-1)
+		/*if(cid==-1)
 		{
 			op.println("Set password for the new chatroom");
 			String password=ip.readLine();
@@ -95,5 +95,5 @@ public class work_thread extends Thread
         {
             e.printStackTrace();
         }
-    }
+    }*/
 }
