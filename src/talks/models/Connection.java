@@ -27,7 +27,7 @@ abstract public class Connection
 	/**IO object*/
 	private ObjectOutputStream out=null;
 	
-	abstract public void connect();
+	//abstract public void connect();
 
 	/**
          *Method for sending serialized object
