@@ -1,7 +1,9 @@
-package talks.models;
+package talks.models.server;
 
 import java.net.Socket;
 import java.net.ServerSocket;
+
+import talks.models.*;
 
 public class ServerConnection extends Connection
 {

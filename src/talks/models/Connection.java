@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.*;
 
 
-abstract class Connection
+abstract public class Connection
 {
 	/*
 	*Abstract class used for connecting server and client
@@ -25,7 +25,7 @@ abstract class Connection
 	/*IO object*/
 	private ObjectOutputStream out=null;
 	
-	abstract void connect();
+	abstract public void connect();
 
 	public void sendObject(Object o)
 	{

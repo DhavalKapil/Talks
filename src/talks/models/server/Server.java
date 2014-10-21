@@ -1,14 +1,8 @@
-/**
- * A server program that accepts input from one client and forwards it to all the clients connected to it
- */
-
- /* Abhi kar rhee hoon. Kal shaam tak poora kar doongie. Compile nhin hoga abhi */
+package talks.models.server;
 
 import java.io.*;
 import java.net.*;
-import ServerConnection;
-import ClientConection;
-import ChatRoom;
+
 public class Server
 {
 	private ArrayList<ChatRoom> chatRoomList;

@@ -1,7 +1,9 @@
-package talks.models;
+package talks.models.client;
 
 import java.io.*;
 import java.net.Socket;
+
+import talks.models.*;
 
 public class ClientConnection extends Connection
 {
