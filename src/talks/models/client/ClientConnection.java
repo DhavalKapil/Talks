@@ -5,9 +5,14 @@ import java.net.Socket;
 
 import talks.models.*;
 
+
+/**
+ *Connects the client to the Server
+ */
+
 public class ClientConnection extends Connection
 {
-	/*Connects the client to the Server*/
+	
 	public void connect()
 	{
 		try

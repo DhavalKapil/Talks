@@ -8,7 +8,15 @@ import talks.models.*;
 public class ServerConnection extends Connection
 {
 	private ServerSocket serverSocket=null;
-	public void connect()
+
+
+	public ServerConnection(Socket s)
+	{
+		socket=s;
+	}
+
+
+	/*public void connect()
 	{
 		try
 		{
@@ -17,5 +25,5 @@ public class ServerConnection extends Connection
 		}
 		catch(Exception e)
 		{e.printStackTrace();}
-	}
+	}*/
 }

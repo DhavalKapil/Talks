@@ -4,34 +4,37 @@ import java.io.*;
 import java.net.*;
 
 
+
+
+	/**
+        *Abstract class used for connecting server and client
+        *and for exchange of information between them.
+        */
+
 abstract public class Connection
 {
-	/*
-	*Abstract class used for connecting server and client
- 	*and for exchange of information between them.
-	*/
-	
-	/*Port number on which the server is running*/
+	/**Port number on which the server is running*/
 	protected int port;
 
-	/*Host address*/
+	/**Host address*/
 	protected String host;
 
-	/*Scoket object for sending and receiving information*/
+	/**Scoket object for sending and receiving information*/
 	protected Socket socket;
 
-	/*IO object*/
+	/**IO object*/
 	private ObjectInputStream in=null;
-	/*IO object*/
+	/**IO object*/
 	private ObjectOutputStream out=null;
 	
-	abstract public void connect();
+	//abstract public void connect();
 
+	/**
+         *Method for sending serialized object
+         */
 	public void sendObject(Object o)
 	{
-		/*
-		*Method for sending serialized object
-		*/
+		
 		try
 		{
 			out=new ObjectOutputStream(socket.getOutputStream());
@@ -43,11 +46,15 @@ abstract public class Connection
 		}
 	}
 
+
+
+
+       /**
+        *Method for receiving serialized object
+        */
 	public Object receiveObject()
 	{
-		/*
-		*Method for receiving serialized object
-		*/
+		
 		try
 		{
 			in=new ObjectInputStream(socket.getInputStream());
@@ -63,11 +70,11 @@ abstract public class Connection
 		
 	}
 
+       /**
+        *Method for closing the socket
+        */
 	public void close()
 	{
-		/*
-		*Method for closing the socket
-		*/
 		try
 		{
 			socket.close();
