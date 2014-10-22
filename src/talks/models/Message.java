@@ -21,14 +21,21 @@ public class Message
 	private long timestamp;
 
 	/**
-	 * addTimeStamp() method stores the number of milliseconds
-	 * between midnight of January 1, 1970 and the current date 
-	 * in the private variable- timestamp
+	 * Constructor to initialize a blank message
 	 */
-	public void addTimestamp()
+	public Message()
 	{
-		Date current = new Date();
-		timestamp = current.getTime();
+		this(0,0,null);
+	}
+
+	/**
+	 * The constructor to initialize a message
+	 */
+	public Message(int statusCode, int creatorId, String message)
+	{
+		this.statusCode = statusCode;
+		this.creatorId = creatorId;
+		this.message = message;
 	}
 
 	//getters and setters
@@ -51,7 +58,7 @@ public class Message
 		this.creatorId=creatorId;
 	}
 
-        public String getMessage()
+	public String getMessage()
 	{
 		return message;
 	}
@@ -64,10 +71,16 @@ public class Message
 	{
 		return timestamp;
 	}
-	public void setTimestamp(long timestamp)
+
+	/**
+	 * addTimeStamp() method stores the number of milliseconds
+	 * between midnight of January 1, 1970 and the current date 
+	 * in the private variable- timestamp
+	 */
+	public void addTimestamp()
 	{
-		this.timestamp=timestamp;
+		Date current = new Date();
+		timestamp = current.getTime();
 	}
-	
 }
 

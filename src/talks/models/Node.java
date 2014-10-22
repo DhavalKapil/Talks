@@ -24,6 +24,14 @@ public class Node
     private Connection connection;
 
     /**
+     * public constructor that initialized a node with only an id
+     */
+    public Node(int id)
+    {
+        this.id = id;
+    }
+
+    /**
      * public constructor to initialize the instance variables
      */
     public Node(int id, int chatRoomId, String name, Connection connection)
@@ -84,6 +92,8 @@ public class Node
     public void sendMessage(Message message)
     throws IOException
     {
+        message.addTimestamp();
+        
         this.connection.sendObject(message);
     }
 

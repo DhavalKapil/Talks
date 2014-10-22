@@ -1,42 +1,66 @@
 package talks.models.server;
+
 import java.util.*;
 import java.io.*;
 import java.net.*;
 
+import talks.models.*;
+
+/**
+ * Main Server class
+ */
 public class Server
 {
-	//private ArrayList<ChatRoom> chatRoomList;
-	//private ArrayList<Node> nodes;
+	/**
+	 * Array of chat rooms that are created by the clients
+	 *
+	 * @var ArratList
+	 */
+	private ArrayList<ChatRoom> chatRoomList;
+
+	/**
+	 * Main method to that starts the server
+	 */
 	public static void main(String[] args)
 	throws Exception
 	{
+		int port;
+
 		if(args.length!=1)
 		{
 			System.out.println("Error in syntax");
 			System.out.println("Usage: java Server -port");
 			return;
 		}
-		int port;
+		
 		try
 		{
 			port= Integer.parseInt(args[0]);
 		}
 		catch(NumberFormatException e)
 		{
-			System.out.println("port expected...");
+			System.out.println("Number expected");
 			return;
 		}
-		ServerSocket server_socket=new ServerSocket(port);
-		/*remove accept from the server connection class */
-		System.out.println("server started");
+
+		int nodeId = 1;
+
+		ServerSocket serverSocket = new ServerSocket(port);
+
+		System.out.println("Server started");
+
 		while(true)
 		{
-			Socket s=server_socket.accept();
-			ServerConnection server_connection=new ServerConnection(s);
-			Thread t = new work_thread(server_connection);
-			t.start();
+			Socket socket = serverSocket.accept();
+
+			ServerConnection serverConnection = new ServerConnection(socket);
+
+			Node node = new Node(nodeId++);
+			node.setConnection(serverConnection);
+
+			Thread thread = new ClientThread(node);
+			thread.start();
 		}
-		//server_socket.close();
 	}
 
 }
