@@ -16,7 +16,7 @@ public class Server
 	 *
 	 * @var ArratList
 	 */
-	private ArrayList<ChatRoom> chatRoomList;
+	ArrayList<ChatRoom> chatRoomList;
 
 	/**
 	 * Main method to that starts the server
