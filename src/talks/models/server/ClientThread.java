@@ -50,6 +50,8 @@ class ClientThread extends Thread
 		returnMessage.setMessage(Integer.toString(chatRoom.getId()));
 		returnMessage.setCreatorId(this.node.getId());
 
+		Server.nodeIdRoomMaps.put(this.node.getId(), chatRoom);
+
 		this.node.sendMessage(returnMessage);
 	}
 
@@ -77,10 +79,13 @@ class ClientThread extends Thread
 			{
 				if(Server.chatRoomList.get(i).getPassword().equals(identifierAndPassword[1]))
 				{
-					Server.chatRoomList.get(i).insertNode(node);
+					ChatRoom chatRoom = Server.chatRoomList.get(i);
+
+					chatRoom.insertNode(node);		
+					Server.nodeIdRoomMaps.put(this.node.getId(), chatRoom);
 
 					returnMessage.setStatusCode(301);
-					returnMessage.setMessage(Integer.toString(Server.chatRoomList.get(i).getId()));
+					returnMessage.setMessage(Integer.toString(chatRoom.getId()));
 					break;
 				}
 				else
@@ -98,13 +103,9 @@ class ClientThread extends Thread
 	private void forwardChat(Message message)
 	throws IOException
 	{
-		for(Node node : Server.nodes)
-		{
-			if(node.getId()==message.getCreatorId())
-			{
-				node.sendMessage(message);
-			}
-		}
+		ChatRoom chatRoom = Server.nodeIdRoomMaps.get(message.getCreatorId());
+
+		chatRoom.broadcast(message);
 	}
 
 	/**

@@ -26,6 +26,13 @@ public class Server
 	static ArrayList<Node> nodes;
 
 	/**
+	 * A mapping of the node id's versus it's chat group
+	 *
+	 * @var HashMap<Integer, ChatRoom>
+	 */
+	static HashMap<Integer, ChatRoom> nodeIdRoomMaps;
+
+	/**
 	 * Static variables to hold the counter for the id of node and chatRoom
 	 */
 	static int nodeId = 1;
@@ -48,7 +55,7 @@ public class Server
 		
 		try
 		{
-			port= Integer.parseInt(args[0]);
+			port = Integer.parseInt(args[0]);
 		}
 		catch(NumberFormatException e)
 		{
