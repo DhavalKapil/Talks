@@ -16,7 +16,13 @@ public class Server
 	 *
 	 * @var ArratList
 	 */
-	ArrayList<ChatRoom> chatRoomList;
+	static ArrayList<ChatRoom> chatRoomList;
+
+	/**
+	 * Static variables to hold the counter for the id of node and chatRoom
+	 */
+	static int nodeId = 1;
+	static int chatRoomId = 1;
 
 	/**
 	 * Main method to that starts the server
@@ -42,8 +48,6 @@ public class Server
 			System.out.println("Number expected");
 			return;
 		}
-
-		int nodeId = 1;
 
 		ServerSocket serverSocket = new ServerSocket(port);
 
