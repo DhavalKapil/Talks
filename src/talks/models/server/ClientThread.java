@@ -27,6 +27,7 @@ class ClientThread extends Thread
 	{
 		Message message = new Message();
 		message.setMessage(Integer.toString(node.getId()));
+		message.setCreatorId(this.node.getId());
 
 		this.node.sendMessage(message);
 	}
@@ -47,12 +48,14 @@ class ClientThread extends Thread
 
 		Message returnMessage = new Message();
 		returnMessage.setMessage(Integer.toString(chatRoom.getId()));
+		returnMessage.setCreatorId(this.node.getId());
 
 		this.node.sendMessage(returnMessage);
 	}
 
 	/**
 	 * Function to join a chatRoom
+	 *
 	 * 301 -> Successfully joined chatRoom
 	 * 501 -> Wrong password
 	 * 502 -> Chat room not found
@@ -60,7 +63,9 @@ class ClientThread extends Thread
 	private void joinChatRoom(Message message)
 	throws IOException
 	{
-		Message returnMessage = new Message();
+		Message returnMessage = new Message();	
+
+		returnMessage.setCreatorId(this.node.getId());
 		returnMessage.setStatusCode(502);
 		returnMessage.setMessage("Chat room not found");
 
@@ -90,10 +95,21 @@ class ClientThread extends Thread
 		this.node.sendMessage(message);
 	}
 
+	private void forwardChat(Message message)
+	throws IOException
+	{
+		for(Node node : Server.nodes)
+		{
+			if(node.getId()==message.getCreatorId())
+			{
+				node.sendMessage(message);
+			}
+		}
+	}
+
 	/**
 	 * Function to broadcast the message to all nodes in the chat group
 	 */
-
 	public void run()
 	{
 		try

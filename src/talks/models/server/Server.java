@@ -14,9 +14,16 @@ public class Server
 	/**
 	 * Array of chat rooms that are created by the clients
 	 *
-	 * @var ArratList
+	 * @var ArrayList<ChatRoom>
 	 */
 	static ArrayList<ChatRoom> chatRoomList;
+
+	/**
+	 * Array of Nodes
+	 *
+	 * @var ArrayList<ChatRoom>
+	 */
+	static ArrayList<Node> nodes;
 
 	/**
 	 * Static variables to hold the counter for the id of node and chatRoom
@@ -61,6 +68,7 @@ public class Server
 
 			Node node = new Node(nodeId++);
 			node.setConnection(serverConnection);
+			nodes.add(node);
 
 			Thread thread = new ClientThread(node);
 			thread.start();

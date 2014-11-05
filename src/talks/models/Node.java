@@ -93,7 +93,6 @@ public class Node
     throws IOException
     {
         message.addTimestamp();
-        message.setCreatorId(this.id);
         
         this.connection.sendObject(message);
     }
