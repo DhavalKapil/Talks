@@ -105,6 +105,7 @@ public class Node
      * @throws IOException
      */
     public Message receiveMessage()
+    throws IOException, ClassNotFoundException
     {
         Message message = (Message)this.connection.receiveObject();
 
