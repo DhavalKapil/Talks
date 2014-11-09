@@ -130,6 +130,7 @@ public class HomeFrame extends javax.swing.JFrame {
             this.node.sendMessage(message);
 
             int chatRoomId = Integer.parseInt(this.node.receiveMessage().getMessage());
+            this.node.setChatRoomId(chatRoomId);
 
             // Showing ChatFrame now
             this.setVisible(false);
@@ -160,8 +161,11 @@ public class HomeFrame extends javax.swing.JFrame {
         {
             this.node.sendMessage(message);
 
-            //int chatRoomId = Integer.parseInt(this.node.receiveMessage().getMessage());
-            System.out.println(this.node.receiveMessage().getMessage());
+            // Ignoring the first message
+            node.receiveMessage();
+
+            int chatRoomId = Integer.parseInt(this.node.receiveMessage().getMessage());
+            this.node.setChatRoomId(chatRoomId);
 
             // Showing ChatFrame now
             this.setVisible(false);

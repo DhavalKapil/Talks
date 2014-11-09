@@ -23,9 +23,12 @@ class ClientThread extends Thread
 	 * Function to send the id back to the node
 	 */
 	public void initializeNode()
-	throws IOException
+	throws IOException, ClassNotFoundException
 	{
-		Message message = new Message();
+		Message message = this.node.receiveMessage();
+		this.node.setName(message.getMessage());
+
+		message = new Message();
 		message.setMessage(Integer.toString(node.getId()));
 		message.setCreatorId(this.node.getId());
 
@@ -70,6 +73,7 @@ class ClientThread extends Thread
 		returnMessage.setMessage("Chat room not found");
 
 		String[] identifierAndPassword = message.getMessage().split("\n");
+		ChatRoom chatRoom = null;
 
 		for(int i=0; i<Server.chatRoomList.size();i++)
 		{
@@ -77,13 +81,18 @@ class ClientThread extends Thread
 			{
 				if(Server.chatRoomList.get(i).getPassword().equals(identifierAndPassword[1]))
 				{
-					ChatRoom chatRoom = Server.chatRoomList.get(i);
+					chatRoom = Server.chatRoomList.get(i);
 
 					chatRoom.insertNode(node);		
 					Server.nodeIdRoomMaps.put(this.node.getId(), chatRoom);
 
 					returnMessage.setStatusCode(301);
 					returnMessage.setMessage(Integer.toString(chatRoom.getId()));
+
+					// Pinging everyone that a new user has been added
+					Message notice = new Message(202, this.node.getId(), this.node.getName());
+					chatRoom.broadcast(notice);
+
 					break;
 				}
 				else
@@ -95,7 +104,16 @@ class ClientThread extends Thread
 			}
 		}
 
-		this.node.sendMessage(message);
+		this.node.sendMessage(returnMessage);
+
+		if(returnMessage.getStatusCode()==301)
+		{
+			for(Node n : chatRoom.getNodes())
+			{
+				Message m = new Message(203, n.getId(), n.getName());
+				this.node.sendMessage(m);
+			}
+		}
 	}
 
 	private void forwardChat(Message message)

@@ -46,6 +46,10 @@ public class Client
 			// Initializing a node
 			Node node = new Node(0, 0, name, connection);
 
+			Message message = new Message();
+			message.setMessage(node.getName());
+			node.sendMessage(message);
+
 			int id = Integer.parseInt(node.receiveMessage().getMessage());
 			node.setId(id);
 
