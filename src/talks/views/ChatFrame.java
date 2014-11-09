@@ -1,12 +1,18 @@
 package talks.views;
 
+import talks.*;
+import talks.models.*;
+import talks.controllers.*;
 
 public class ChatFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form ChatFrame
      */
-    public ChatFrame() {
+    public ChatFrame(Node node) {
+
+        this.node = node;
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -86,5 +92,8 @@ public class ChatFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    // End of variables declaration                   
+    // End of variables declaration            
+
+    /** The node of the user*/
+    private Node node;
 }

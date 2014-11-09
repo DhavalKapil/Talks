@@ -11,13 +11,8 @@ public class ChatController
 	/**
 	 * Function to display the ChatFrame
 	 */
-	public static void display()
+	public static void display(Node node)
 	{
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ChatFrame().setVisible(true);
-            }
-        });
+        new ChatFrame(node).setVisible(true);
 	}
 }

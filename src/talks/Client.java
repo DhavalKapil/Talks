@@ -12,7 +12,7 @@ public class Client
 	/**
 	 * Private static function to ask something from the user
 	 */
-	private static String prompt(String message)
+	public static String prompt(String message)
 	{
 		return javax.swing.JOptionPane.showInputDialog(message);
 	}

@@ -1,6 +1,10 @@
 package talks.views;
 
+import talks.*;
 import talks.models.*;
+import talks.controllers.*;
+
+import java.io.*;
 
 /**
  * The HomeFrame is a view that shows the starting options for the application
@@ -111,11 +115,66 @@ public class HomeFrame extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        
+        // Creating Chat Room button clicked
+        String identifier = Client.prompt("Enter identifier for chat room");
+        String password = Client.prompt("Enter password");
+        //String description = Client.prompt("Enter description of your chat room");
+
+        String m = password + "\n" + "-" + "\n" + identifier;
+
+        Message message = new Message(101, this.node.getId(), m);
+
+        try
+        {
+            this.node.sendMessage(message);
+
+            int chatRoomId = Integer.parseInt(this.node.receiveMessage().getMessage());
+
+            // Showing ChatFrame now
+            this.setVisible(false);
+            ChatController.display(this.node);
+        }
+        catch(ClassNotFoundException cnfe)
+        {
+            System.out.println(cnfe.toString());
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error in sending message");
+            System.out.println(e.toString());
+        }
     }                                        
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        
+        // Join ChatRoom button clicked
+        String identifier = Client.prompt("identifier of the chat room");
+        String password = Client.prompt("Password");
+
+        String m = identifier + "\n" + password;
+
+        Message message = new Message(102,this.node.getId(), m);
+
+        try
+        {
+            this.node.sendMessage(message);
+
+            int chatRoomId = Integer.parseInt(this.node.receiveMessage().getMessage());
+
+            // Showing ChatFrame now
+            this.setVisible(false);
+            ChatController.display(this.node);
+        }
+        catch(ClassNotFoundException cnfe)
+        {
+            System.out.println(cnfe.toString());
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error in sending message");
+            System.out.println(e.toString());
+        }
     }
 
     // Variables declaration - do not modify                     
