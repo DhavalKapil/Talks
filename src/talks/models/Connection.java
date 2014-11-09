@@ -12,9 +12,6 @@ abstract public class Connection
 	/** Port number on which the server is running */
 	protected int port;
 
-	/** Host address */
-	protected String host;
-
 	/** Scoket object for sending and receiving information */
 	protected Socket socket;
 
@@ -23,6 +20,17 @@ abstract public class Connection
 
 	/** The output stream object */
 	private ObjectOutputStream out;
+
+	/**
+	 * Function to establish streams
+	 */
+	protected void establishStreams()
+	throws IOException
+	{
+		this.in = new ObjectInputStream(this.socket.getInputStream());
+
+		this.out = new ObjectOutputStream(this.socket.getOutputStream());
+	}
 	
 	/**
      * Method for sending serialized object
@@ -30,7 +38,6 @@ abstract public class Connection
 	public void sendObject(Object o)
 	throws IOException
 	{
-		out = new ObjectOutputStream(socket.getOutputStream());
 		out.writeObject(o);
 	}
 
@@ -40,7 +47,6 @@ abstract public class Connection
 	public Object receiveObject()
 	throws IOException, ClassNotFoundException
 	{	
-		in = new ObjectInputStream(socket.getInputStream());
 		Object o = (Object)in.readObject();
 
 		return o;		

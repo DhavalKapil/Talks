@@ -12,18 +12,25 @@ import talks.models.*;
 
 public class ClientConnection extends Connection
 {
-	
-	public void connect()
+	/** Host address */
+	private String host;
+
+	/**
+	 * Constructor to intialize host and port
+	 */
+	public ClientConnection(String host, int port)
 	{
-		try
-		{
-			socket=new Socket(host,port);
-			System.out.println("Connected to Server :D!!!");
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
+		this.host = host;
+		this.port = port;
+	}
+	
+	/**
+	 * Function to connect to the server
+	 */
+	public void connect()
+	throws IOException
+	{	
+		socket = new Socket(host, port);
 	}
 	
 }

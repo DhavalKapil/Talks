@@ -7,23 +7,11 @@ import talks.models.*;
 
 public class ServerConnection extends Connection
 {
-	private ServerSocket serverSocket=null;
-
-
-	public ServerConnection(Socket s)
+	/**
+	 * Constructor
+	 */
+	public ServerConnection(Socket socket)
 	{
-		socket=s;
+		this.socket = socket;
 	}
-
-
-	/*public void connect()
-	{
-		try
-		{
-			serverSocket=new ServerSocket(port);
-			socket=serverSocket.accept();
-		}
-		catch(Exception e)
-		{e.printStackTrace();}
-	}*/
 }
