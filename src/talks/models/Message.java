@@ -1,12 +1,13 @@
 package talks.models;
 
 import java.util.Date;
+import java.io.*;
 
 /**
  * The Message class implements an abstraction for 
  * a message which is communicated between a client and the server.
  */
-public class Message
+public class Message implements Serializable
 {
 	/** The status of the message */
 	private int statusCode;

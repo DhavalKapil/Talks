@@ -16,21 +16,21 @@ public class Server
 	 *
 	 * @var ArrayList<ChatRoom>
 	 */
-	static ArrayList<ChatRoom> chatRoomList;
+	static ArrayList<ChatRoom> chatRoomList = new ArrayList<ChatRoom>();
 
 	/**
 	 * Array of Nodes
 	 *
 	 * @var ArrayList<ChatRoom>
 	 */
-	static ArrayList<Node> nodes;
+	static ArrayList<Node> nodes = new ArrayList<Node>();
 
 	/**
 	 * A mapping of the node id's versus it's chat group
 	 *
 	 * @var HashMap<Integer, ChatRoom>
 	 */
-	static HashMap<Integer, ChatRoom> nodeIdRoomMaps;
+	static HashMap<Integer, ChatRoom> nodeIdRoomMaps = new HashMap<Integer, ChatRoom>();
 
 	/**
 	 * Static variables to hold the counter for the id of node and chatRoom

@@ -31,7 +31,6 @@ public class ClientConnection extends Connection
 	throws IOException
 	{	
 		socket = new Socket(host, port);
-
 		super.establishStreams();
 	}
 	

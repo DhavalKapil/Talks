@@ -27,9 +27,9 @@ abstract public class Connection
 	protected void establishStreams()
 	throws IOException
 	{
-		this.in = new ObjectInputStream(this.socket.getInputStream());
-
 		this.out = new ObjectOutputStream(this.socket.getOutputStream());
+		
+		this.in = new ObjectInputStream(this.socket.getInputStream());
 	}
 	
 	/**

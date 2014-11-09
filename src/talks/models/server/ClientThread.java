@@ -37,7 +37,7 @@ class ClientThread extends Thread
 	 */
 	private void createChatRoom(Message message)
 	throws IOException
-	{
+	{	
 		String[] contents = message.getMessage().split("\n");
 
 		ArrayList<Node> nodes = new ArrayList<Node>();
@@ -45,13 +45,11 @@ class ClientThread extends Thread
 
 		ChatRoom chatRoom = new ChatRoom(contents[0], contents[1], nodes, Server.chatRoomId++, contents[2]);
 		Server.chatRoomList.add(chatRoom);
-
 		Message returnMessage = new Message();
 		returnMessage.setMessage(Integer.toString(chatRoom.getId()));
 		returnMessage.setCreatorId(this.node.getId());
 
 		Server.nodeIdRoomMaps.put(this.node.getId(), chatRoom);
-
 		this.node.sendMessage(returnMessage);
 	}
 
@@ -116,7 +114,6 @@ class ClientThread extends Thread
 		try
 		{
 			initializeNode();
-
 			// Node is initalized. Loop now over the various functions
 			while(true)
 			{
@@ -137,6 +134,7 @@ class ClientThread extends Thread
 		catch(Exception e)
 		{
 			System.out.println("ERROR: " + e.toString());
+			e.printStackTrace();
 		}
 	}
 }

@@ -160,7 +160,8 @@ public class HomeFrame extends javax.swing.JFrame {
         {
             this.node.sendMessage(message);
 
-            int chatRoomId = Integer.parseInt(this.node.receiveMessage().getMessage());
+            //int chatRoomId = Integer.parseInt(this.node.receiveMessage().getMessage());
+            System.out.println(this.node.receiveMessage().getMessage());
 
             // Showing ChatFrame now
             this.setVisible(false);
