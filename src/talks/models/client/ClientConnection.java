@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.Socket;
 
 import talks.models.*;
-
+import talks.models.client.*;
 
 /**
  *Connects the client to the Server
@@ -31,6 +31,8 @@ public class ClientConnection extends Connection
 	throws IOException
 	{	
 		socket = new Socket(host, port);
+
+		super.establishStreams();
 	}
 	
 }

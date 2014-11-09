@@ -1,5 +1,7 @@
 package talks.views;
 
+import talks.models.*;
+
 /**
  * The HomeFrame is a view that shows the starting options for the application
  */
@@ -8,7 +10,9 @@ public class HomeFrame extends javax.swing.JFrame {
     /**
      * Creates new form HomeFrame
      */
-    public HomeFrame() {
+    public HomeFrame(Node node) {
+
+        this.node = node;
 
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -118,5 +122,8 @@ public class HomeFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
-    // End of variables declaration                   
+    // End of variables declaration    
+
+    /** The node associated with the frame */
+    private Node node;               
 }

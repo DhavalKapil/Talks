@@ -11,13 +11,8 @@ public class HomeController
 	/**
 	 * Function to display the HomeFrame
 	 */
-	public static void display()
+	public static void display(Node node)
 	{
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new HomeFrame().setVisible(true);
-            }
-        });
+        new HomeFrame(node).setVisible(true);
 	}
 }
