@@ -67,14 +67,13 @@ public class ChatFrame extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jTextField1.setText("jTextField1");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("jButton2");
+        jButton2.setText("Sign Out");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -112,7 +111,9 @@ public class ChatFrame extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
+        
+        // Simple exit
+        System.exit(0);
     }                                        
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {                                            
@@ -124,6 +125,7 @@ public class ChatFrame extends javax.swing.JFrame {
         {   
             Message message = new Message(201, this.node.getId(), text);
             this.node.sendMessage(message); 
+            jTextField1.setText("");
         }
         catch(IOException e)
         {
@@ -143,6 +145,8 @@ public class ChatFrame extends javax.swing.JFrame {
     public void append(String text)
     {
         this.jTextArea1.append(text);
+        jScrollPane1.getVerticalScrollBar().setValue(jScrollPane1.getVerticalScrollBar().getMaximum() + 4);
+
     }
 
     /**

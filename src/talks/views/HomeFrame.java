@@ -150,8 +150,8 @@ public class HomeFrame extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         
         // Join ChatRoom button clicked
-        String identifier = Client.prompt("identifier of the chat room");
-        String password = Client.prompt("Password");
+        String identifier = Client.prompt("Enter identifier of the chat room");
+        String password = Client.prompt("Enter password");
 
         String m = identifier + "\n" + password;
 
