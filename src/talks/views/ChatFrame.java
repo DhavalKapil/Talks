@@ -29,7 +29,7 @@ public class ChatFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ChatFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         initComponents();
     }
 
@@ -82,19 +82,6 @@ public class ChatFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ChatFrame().setVisible(true);
-            }
-        });
-    }
     // Variables declaration - do not modify                     
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
