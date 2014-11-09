@@ -78,6 +78,27 @@ public class ClientReceiver extends Thread
 		this.nodes.add(node);
 	}
 
+	/**
+	 * Removes a node that get's disconnected
+	 */
+	private void removeNode(Message message)
+	{
+		int id = message.getCreatorId();
+		String name = null;
+
+		for(Node node : nodes)
+		{
+			if(node.getId()==id)
+			{
+				name = node.getName();
+				nodes.remove(node);
+				break;
+			}
+		}
+
+		this.chatFrame.append(name + " exited the ChatRoom\n");
+	}
+
 	public void run()
 	{
 		try
@@ -92,6 +113,8 @@ public class ClientReceiver extends Thread
 					case 202 : addNode(message);
 						break;
 					case 203 : addPreviousNode(message);
+						break;
+					case 204 : removeNode(message);
 						break;
 				}
 			}

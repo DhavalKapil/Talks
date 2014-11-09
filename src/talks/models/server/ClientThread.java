@@ -124,6 +124,18 @@ class ClientThread extends Thread
 		chatRoom.broadcast(message);
 	}
 
+	private void exitFromChatRoom()
+	throws IOException
+	{
+		ChatRoom chatRoom = Server.nodeIdRoomMaps.get(this.node.getId());
+
+		Message message = new Message(204, this.node.getId(), null);
+
+		chatRoom.removeNode(this.node);
+
+		chatRoom.broadcast(message);
+	}
+
 	/**
 	 * Function to broadcast the message to all nodes in the chat group
 	 */
@@ -151,8 +163,15 @@ class ClientThread extends Thread
 		}
 		catch(Exception e)
 		{
-			System.out.println("ERROR: " + e.toString());
-			e.printStackTrace();
+			try
+			{
+				exitFromChatRoom();
+			}
+			catch(Exception e2)
+			{
+				System.out.println("ERROR: " + e2.toString());
+				e2.printStackTrace();
+			}
 		}
 	}
 }

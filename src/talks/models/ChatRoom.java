@@ -105,4 +105,12 @@ public class ChatRoom
 	{
 		nodes.add(node);
 	}
+
+	/**
+	 * Removes a Node
+	 */
+	public void removeNode(Node node)
+	{
+		nodes.remove(node);
+	}
 }
